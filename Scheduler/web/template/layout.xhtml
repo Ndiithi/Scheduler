@@ -38,9 +38,7 @@
             <div class="wrapper">
                 
                 <div class="header">
-                    <h1>
-                        <ui:insert name="pageHeader"/>
-                    </h1>
+                    <h1 class="bannerHeader">Sms Scheduler </h1>
                 </div>
                 
                 <div class="menuBar">
@@ -51,7 +49,7 @@
                     <div class="subMenu" id="databaseMenu" >
                         
                             <ul>
-                                <li><h:commandLink styleClass="menuitem flatlink" id="newDbCon" value="New Database Connection"/></li>
+                                <li><h:commandLink styleClass="menuitem flatlink" id="newDbCon" action="/scheduler/database/create_database" value="New Database Connection"/></li>
                                 <li><h:commandLink styleClass="menuitem flatlink" id="viewDbConn" value="View Database Connection"/></li>
                             </ul>
                                            
