@@ -21,7 +21,7 @@ import javax.validation.constraints.NotNull;
  * @author towers
  */
 @RequestScoped
-public class DatabaseConnection {
+public abstract class  DatabaseConnection {
     @NotNull
      String host;
     @NotNull
@@ -38,9 +38,6 @@ public class DatabaseConnection {
      * Creates a new instance of CreateNewDatabaseEntry
      */
     public DatabaseConnection() {
-    }
-
-    public void persistDatabaseDetails() {
     }
 
     public String getHost() {

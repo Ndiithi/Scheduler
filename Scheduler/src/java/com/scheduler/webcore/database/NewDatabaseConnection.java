@@ -25,14 +25,6 @@ public class NewDatabaseConnection extends DatabaseConnection{
    
     
     private EntityManagerFactory emf;
-    @NotNull
-     String host;
-    @NotNull
-     String user;
-    @NotNull
-     String password;
-    @NotNull
-     String databaseName;
 
     /**
      * Creates a new instance of CreateNewDatabaseEntry
@@ -64,5 +56,9 @@ public class NewDatabaseConnection extends DatabaseConnection{
 
     }
 
-
+ public String getHost() {
+     System.out.println("Line host from newDatabaseconnection");
+        return host;
+        
+    }
 }

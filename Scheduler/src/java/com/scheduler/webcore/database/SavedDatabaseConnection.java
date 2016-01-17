@@ -6,24 +6,17 @@
 package com.scheduler.webcore.database;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
-import javax.validation.constraints.NotNull;
+import javax.faces.bean.RequestScoped;
+
 
 /**
  *
  * @author towers
  */
 @ManagedBean
-@ViewScoped
+@RequestScoped
 public class SavedDatabaseConnection extends DatabaseConnection{
-    @NotNull
-     String host;
-    @NotNull
-     String user;
-    @NotNull
-     String password;
-    @NotNull
-     String databaseName;
+
     /**
      * Creates a new instance of SavedDatabaseConnection
      */
@@ -33,5 +26,9 @@ public class SavedDatabaseConnection extends DatabaseConnection{
     public void updateDetails(){
         
     }
-    
+    public String getHost() {
+     System.out.println("Line host from savedDatabaseconnection");
+        return host;
+        
+    }
 }
