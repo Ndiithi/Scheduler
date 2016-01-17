@@ -11,10 +11,36 @@
         </ui:define>
         
         <ui:define name="content">
-            <ui:include src="database_template.xhtml"/>
-            <div class=" center-text">
+             <div class=" center-text">
+                <h:panelGrid columns="3" styleClass="center text-justify">
+                    <f:facet name="header">
+                        <h:panelGroup>
+                            <p class="facet">Edit Database Connection</p>
+                            <br/>
+                        </h:panelGroup>  
+                    </f:facet>
+                    
+                    <h:outputLabel value="Host Name:"/>
+                    <h:inputText id="hostname" value="#{savedDatabaseConnection.host}"/>
+                    <h:message for="hostname"/>
+                    
+                    <h:outputLabel value="Database Name:"/>
+                    <h:inputText id="databaseName" value="#{savedDatabaseConnection.databaseName}"/>
+                    <h:message for="databaseName"/>
+                    
+                    <h:outputLabel value="User:"/>
+                    <h:inputText id="user" value="#{savedDatabaseConnection.user}"/>
+                    <h:message for="user"/>
+                    
+                    <h:outputLabel value="Password:"/>
+                    <h:inputText id="password" value="#{savedDatabaseConnection.password}"/>
+                    <h:message for="password"/>
+                </h:panelGrid>
                 <h:commandButton value="Edit Connection" action="#{savedDatabaseConnection.updateDetails}"/>
             </div>
+            
+                
+            
             
         </ui:define>
         

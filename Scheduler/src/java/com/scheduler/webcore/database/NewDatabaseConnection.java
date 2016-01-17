@@ -25,6 +25,14 @@ public class NewDatabaseConnection extends DatabaseConnection{
    
     
     private EntityManagerFactory emf;
+    @NotNull
+     String host;
+    @NotNull
+     String user;
+    @NotNull
+     String password;
+    @NotNull
+     String databaseName;
 
     /**
      * Creates a new instance of CreateNewDatabaseEntry

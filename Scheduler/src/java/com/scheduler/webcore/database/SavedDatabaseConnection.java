@@ -7,6 +7,7 @@ package com.scheduler.webcore.database;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -15,7 +16,14 @@ import javax.faces.bean.ViewScoped;
 @ManagedBean
 @ViewScoped
 public class SavedDatabaseConnection extends DatabaseConnection{
-
+    @NotNull
+     String host;
+    @NotNull
+     String user;
+    @NotNull
+     String password;
+    @NotNull
+     String databaseName;
     /**
      * Creates a new instance of SavedDatabaseConnection
      */

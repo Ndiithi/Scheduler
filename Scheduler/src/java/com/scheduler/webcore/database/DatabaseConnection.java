@@ -20,7 +20,7 @@ import javax.validation.constraints.NotNull;
  *
  * @author towers
  */
-
+@RequestScoped
 public class DatabaseConnection {
     @NotNull
      String host;
@@ -32,7 +32,7 @@ public class DatabaseConnection {
      String databaseName;
     
     
-    private EntityManagerFactory emf;
+    
 
     /**
      * Creates a new instance of CreateNewDatabaseEntry
@@ -67,14 +67,7 @@ public class DatabaseConnection {
         this.password = password;
     }
 
-    public EntityManagerFactory getEmf() {
-        return emf;
-    }
-
-    public void setEmf(EntityManagerFactory emf) {
-        this.emf = emf;
-    }
-
+   
     public String getDatabaseName() {
         return databaseName;
     }
