@@ -22,12 +22,13 @@ import javax.validation.constraints.NotNull;
 @ManagedBean
 @RequestScoped
 public class CreateNewDatabaseEntry {
-
+    @NotNull
     private String host;
     @NotNull
-    @javax.validation.constraints.Digits(integer = 2, fraction = 2)
     private String user;
+    @NotNull
     private String password;
+    @NotNull
     private String databaseName;
 
     
