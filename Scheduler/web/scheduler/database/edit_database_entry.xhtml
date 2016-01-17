@@ -7,13 +7,13 @@
     <ui:composition template="/template/layout.xhtml">
        
         <ui:define name="title">
-            Create Database Connection
+            Edit Database Connection
         </ui:define>
         
         <ui:define name="content">
             <ui:include src="database_template.xhtml"/>
             <div class=" center-text">
-                <h:commandButton value="Save Connection" action="#{newDatabaseConnection.persistDatabaseDetails}"/>
+                <h:commandButton value="Edit Connection" action="#{savedDatabaseConnection.updateDetails}"/>
             </div>
             
         </ui:define>

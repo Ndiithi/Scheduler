@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.scheduler.webcore;
+package com.scheduler.webcore.database;
 
 import com.scheduler.database.DatabaseSource;
 
@@ -21,24 +21,15 @@ import javax.validation.constraints.NotNull;
  */
 @ManagedBean
 @RequestScoped
-public class CreateNewDatabaseEntry {
-    @NotNull
-    private String host;
-    @NotNull
-    private String user;
-    @NotNull
-    private String password;
-    @NotNull
-    private String databaseName;
-
-    
+public class NewDatabaseConnection extends DatabaseConnection{
+   
     
     private EntityManagerFactory emf;
 
     /**
      * Creates a new instance of CreateNewDatabaseEntry
      */
-    public CreateNewDatabaseEntry() {
+    public NewDatabaseConnection() {
     }
 
     public void persistDatabaseDetails() {
@@ -65,44 +56,5 @@ public class CreateNewDatabaseEntry {
 
     }
 
-    public String getHost() {
-        return host;
-    }
-
-    public void setHost(String host) {
-        this.host = host;
-    }
-
-    public String getUser() {
-        return user;
-    }
-
-    public void setUser(String user) {
-        this.user = user;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public EntityManagerFactory getEmf() {
-        return emf;
-    }
-
-    public void setEmf(EntityManagerFactory emf) {
-        this.emf = emf;
-    }
-
-    public String getDatabaseName() {
-        return databaseName;
-    }
-
-    public void setDatabaseName(String databaseName) {
-        this.databaseName = databaseName;
-    }
 
 }
