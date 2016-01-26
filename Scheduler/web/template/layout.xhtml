@@ -51,10 +51,12 @@
                         
                             <ul>
                                 <li>
-                                    <h:commandLink styleClass="menuitem flatlink" id="newDbCon" action="createdatabase" value="New Database Connection"/>
+                                    <h:outputLink styleClass="menuitem flatlink" id="newDbCon"  value="/Scheduler/faces/scheduler/database/create_database.xhtml">New Database Connection</h:outputLink>
                                   
                                 </li>
-                                <li><h:commandLink styleClass="menuitem flatlink" id="viewDbConn" action="editdatabase" value="View Database Connection"/></li>
+                                <li>
+                                    <h:outputLink styleClass="menuitem flatlink" id="viewDbConn"  value="/Scheduler/faces/scheduler/database/edit_database_entry.xhtml">View Database Connection</h:outputLink>
+                                </li>
                             </ul>
                                            
                         
@@ -65,8 +67,8 @@
 
                     <div class="subMenu" id="scheduleMenu">
                         <ul>
-                            <li><h:commandLink styleClass="menuitem flatlink" id="newSchedule" value="New Schedule"/></li>
-                            <li><h:commandLink styleClass="menuitem flatlink" id="viewSchedules" value="View Schedules"/></li>
+                            <li><h:outputLink styleClass="menuitem flatlink" id="newSchedule" value="New Schedule"/></li>
+                            <li><h:outputLink styleClass="menuitem flatlink" id="viewSchedules" value="View Schedules"/></li>
                         </ul>
                 
                     </div>

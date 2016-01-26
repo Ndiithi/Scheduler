@@ -6,6 +6,7 @@
 package com.scheduler.webcore.database;
 
 import com.scheduler.database.DatabaseSource;
+import javax.ejb.EJB;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -14,17 +15,16 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.validation.constraints.NotNull;
 
-
 /**
  *
  * @author towers
  */
 @ManagedBean
 @RequestScoped
-public class NewDatabaseConnection extends DatabaseConnection{
-   
-    
-    private EntityManagerFactory emf;
+public class NewDatabaseConnection extends DatabaseConnection {
+
+    @EJB
+    DatabaseManager dbManager;
 
     /**
      * Creates a new instance of CreateNewDatabaseEntry
@@ -33,32 +33,16 @@ public class NewDatabaseConnection extends DatabaseConnection{
     }
 
     public void persistDatabaseDetails() {
-        System.out.println("Begin data save "+ new java.util.Date());
-       emf= Persistence.createEntityManagerFactory("smsApp");
         
-        EntityManager em = emf.createEntityManager();
-
-        try {
-            em.getTransaction().begin();
-            DatabaseSource database = new DatabaseSource();
-            
-            database.setName(databaseName);
-            database.setHost(host);
-            database.setPassword(password);
-            database.setUser(user);
-
-            em.persist(database);
-            em.getTransaction().commit();
-        } catch (Exception e) {
-        //    utx.rollback();
-            System.err.println(e);
-        }
-
+        DatabaseSource database = new DatabaseSource();
+        
+        database.setName(databaseName);
+        database.setHost(host);
+        database.setPassword(password);
+        database.setUser(user);
+        
+        
+        dbManager.createDatabaseEntry(database);
     }
 
- public String getHost() {
-     System.out.println("Line host from newDatabaseconnection");
-        return host;
-        
-    }
 }
