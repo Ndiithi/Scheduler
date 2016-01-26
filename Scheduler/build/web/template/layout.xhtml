@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>
+            <ui:insert name="title"/>
+        </title>
+        <h:outputScript name="/scripts/jquery-1.6.2.js" />
+        <h:outputStylesheet name="/css/layout.css"/>
+    </h:head>
+    <script> $(document).ready(
+                
+                function () {
+                    $("#databaseMenu").hide();
+                    $("#scheduleMenu").hide();
+                    $("#database").click(
+                            function () {
+                                $("#databaseMenu").toggle();
+                            });
+
+
+                    $("#schedule").click(
+                            function () {
+                                $("#scheduleMenu").toggle();
+                            });
+
+                }
+
+
+        );
+
+
+    </script>
+    <h:body>
+        <h:form >
+            <div class="wrapper">
+                
+                <div class="header">
+                    <h1 class="bannerHeader">Sms Scheduler </h1>
+                </div>
+                
+                <div class="menuBar">
+
+
+                    <a class="menu margin" id="database" href="#">Database</a>
+
+                    <div class="subMenu" id="databaseMenu" >
+                        
+                            <ul>
+                                <li>
+                                    <h:commandLink styleClass="menuitem flatlink" id="newDbCon" action="createdatabase" value="New Database Connection"/>
+                                  
+                                </li>
+                                <li><h:commandLink styleClass="menuitem flatlink" id="viewDbConn" action="editdatabase" value="View Database Connection"/></li>
+                            </ul>
+                                           
+                        
+
+
+                    </div>
+                    <a class="menu margin" id="schedule" href="#">Schedule</a>
+
+                    <div class="subMenu" id="scheduleMenu">
+                        <ul>
+                            <li><h:commandLink styleClass="menuitem flatlink" id="newSchedule" value="New Schedule"/></li>
+                            <li><h:commandLink styleClass="menuitem flatlink" id="viewSchedules" value="View Schedules"/></li>
+                        </ul>
+                
+                    </div>
+
+
+
+                </div>
+
+
+                <div class="content">
+                    <ui:insert name="content"/>   
+                </div>
+
+                <div class="footer">
+                    <ui:include src="/template/footer.xhtml"></ui:include>
+                </div>
+
+            </div>
+        </h:form>
+    </h:body>
+</html>

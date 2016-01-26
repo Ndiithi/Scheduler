@@ -1,0 +1,119 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jan 13, 2016, 7:43:13 PM
+    Author     : towers
+*/
+
+
+* { margin:0; padding:0; }
+
+div.header{
+    padding-top: 5px;
+    padding-left: 5px;
+    
+}
+
+
+div{
+/*    border: 2px solid black;*/
+}
+div.header{
+    background-color: #315dee;
+    height: 120px;
+    position: relative;
+    margin-top: 1px;
+
+}
+
+
+
+div.menuBar{
+    float: left;
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-right: 3px;
+    box-sizing: border-box;
+    width: 20%;
+/*    background-color: #9e9292;*/
+}
+
+div.subMenu{
+    
+    background-color: #9e9292;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+
+
+div.content{
+    padding-left: 10px;
+    margin-top: 5px;
+    float: left;
+    box-sizing: border-box;
+    width: 80%;
+    border: 2px solid #e6b5fe;
+    background-color: #e4e4e4; 
+}
+
+div.footer{
+    
+    position: absolute;
+    bottom: 1px;
+    right: 1px;
+    left: 1px;
+    background-color: #808080;
+    height:  50px;
+    
+}
+
+a.menu{
+    display: block;
+    color: #8cff00;
+    background-color: #9e9292;
+    width: 100%;
+    font-weight: bold;
+}
+
+.margin{
+border: solid #FFFFFF; 
+border-left: 2px;
+border-bottom: 2px;
+}
+
+.menuitem{
+    color: #fefefe;
+}
+
+.flatlink{
+    text-decoration: none;
+    
+}
+div.subMenu li{
+    list-style-position: inside;
+}
+div.subMenu ul{
+    margin-left: 5px;
+    padding-top: 5px;
+}
+h1.bannerHeader{
+    color:  #FFFFFF;
+    
+}
+.center{
+    margin: auto;
+}
+.center-text{
+    text-align: center;
+}
+.text-justify{
+    text-align: justify;
+}
+.facet{
+    background-color: #09c7ff;
+    color: #040405;        
+}
