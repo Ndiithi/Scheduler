@@ -16,7 +16,7 @@ import java.util.List;
  */
 @ManagedBean
 @RequestScoped
-public class SavedDatabaseConnectionEntry extends DatabaseConnection{
+public class SavedDatabaseConnectionEntry{
 
     /**
      * Creates a new instance of SavedDatabaseConnection
@@ -28,9 +28,9 @@ public class SavedDatabaseConnectionEntry extends DatabaseConnection{
         
     }
     
-    public List<DatabaseSource> fetchDatabaseConnectionEntries(){
-        
-    }
+//    public List<DatabaseSource> fetchDatabaseConnectionEntries(){
+//        
+//    }
     
     public void deleteDatabaseEntryDetails(){
     

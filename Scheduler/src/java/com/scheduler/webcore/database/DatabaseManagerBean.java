@@ -14,51 +14,68 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceUnit;
 import javax.transaction.UserTransaction;
+
 /**
  *
  * @author mspace-developer
  */
 @Stateless
-public class DatabaseManagerBean{
+public class DatabaseManagerBean {
+
     @PersistenceContext
     EntityManager em;
-    
+
     public void updateDatabaseEntry(DatabaseSource dbSource) {
-        
+
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    
     public void deleteDatabaseEntry(DatabaseSource dbSource) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    
     public Boolean createDatabaseEntry(DatabaseSource dbSource) {
-        Boolean isPersistSuccessful=false;
-        
-        try{
-            DatabaseSource databaseSc = new DatabaseSource();
-        
-        databaseSc.setNameSc(dbSource.getNameSc());
-        databaseSc.setHostSc(dbSource.getHostSc());
-        databaseSc.setPasswordSc(dbSource.getPasswordSc());
-        databaseSc.setUserSc(dbSource.getUserSc());
-            
-            em.persist(databaseSc);
+        Boolean isPersistSuccessful;
+
+        try {
+
+            em.persist(dbSource);
             em.flush();
-//            isPersistSuccessful=true;
+            isPersistSuccessful = true;
             System.out.println("Saved successfully");
-        }catch(Exception e){
-            isPersistSuccessful=false;
+        } catch (Exception e) {
+            isPersistSuccessful = false;
             System.out.println(e);
-            System.out.println("no saved");
+            System.out.println("not saved");
         }
-        
+
         return isPersistSuccessful;
     }
 
-    
+    public Boolean createDatabaseEntry(String user, String host, String password, String databaseName) {
+        Boolean isPersistSuccessful;
+
+        try {
+            DatabaseSource databaseSc = new DatabaseSource();
+
+            databaseSc.setDatabasenameSc(databaseName);
+            databaseSc.setHostSc(host);
+            databaseSc.setPasswordSc(password);
+            databaseSc.setUserSc(user);
+
+            em.persist(databaseSc);
+            em.flush();
+            isPersistSuccessful = true;
+            System.out.println("Saved successfully");
+        } catch (Exception e) {
+            isPersistSuccessful = false;
+            System.out.println(e);
+            System.out.println("not saved");
+        }
+
+        return isPersistSuccessful;
+    }
+
     public List<DatabaseSource> getDatabaseSourceList() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

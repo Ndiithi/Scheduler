@@ -10,10 +10,6 @@ import javax.ejb.EJB;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -21,10 +17,11 @@ import javax.validation.constraints.NotNull;
  */
 @ManagedBean
 @RequestScoped
-public class NewDatabaseConnection extends DatabaseConnection {
+public class NewDatabaseConnection{
 
     @EJB
-    DatabaseManagerBean dbManager;
+    private DatabaseManagerBean dbManager;
+    private DatabaseSource databaseSource=new DatabaseSource();
 
     /**
      * Creates a new instance of CreateNewDatabaseEntry
@@ -33,16 +30,15 @@ public class NewDatabaseConnection extends DatabaseConnection {
     }
 
     public void persistDatabaseDetails() {
-        
-        DatabaseSource database = new DatabaseSource();
-        
-        database.setNameSc(databaseName);
-        database.setHostSc(host);
-        database.setPasswordSc(password);
-        database.setUserSc(user);
-        
-        
-        dbManager.createDatabaseEntry(database);
+        dbManager.createDatabaseEntry(databaseSource);
+    }
+
+    public DatabaseSource getDatabaseSource() {
+        return databaseSource;
+    }
+
+    public void setDatabaseSource(DatabaseSource databaseSource) {
+        this.databaseSource = databaseSource;
     }
 
 }
