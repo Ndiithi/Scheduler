@@ -5,9 +5,10 @@
  */
 package com.scheduler.webcore.database;
 
+import com.scheduler.database.DatabaseSource;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-
+import java.util.List;
 
 /**
  *
@@ -15,20 +16,24 @@ import javax.faces.bean.RequestScoped;
  */
 @ManagedBean
 @RequestScoped
-public class SavedDatabaseConnection extends DatabaseConnection{
+public class SavedDatabaseConnectionEntry extends DatabaseConnection{
 
     /**
      * Creates a new instance of SavedDatabaseConnection
      */
-    public SavedDatabaseConnection() {
+    public SavedDatabaseConnectionEntry() {
     }
     
-    public void updateDetails(){
+    public void updateDatabaseEntryDetails(){
         
     }
-    public String getHost() {
-     System.out.println("Line host from savedDatabaseconnection");
-        return host;
+    
+    public List<DatabaseSource> fetchDatabaseConnectionEntries(){
         
     }
+    
+    public void deleteDatabaseEntryDetails(){
+    
+    }
+    
 }

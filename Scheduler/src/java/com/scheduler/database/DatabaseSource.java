@@ -5,6 +5,7 @@
  */
 package com.scheduler.database;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,19 +17,19 @@ import javax.validation.constraints.NotNull;
  * @author towers
  */
 @Entity
-public class DatabaseSource {
+public class DatabaseSource implements Serializable{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
     
+    @NotNull(message = "Host name is required")
+    private String _hostSc;
     @NotNull
-    private String _host;
+    private String _nameSc;
     @NotNull
-    private String _name;
+    private String _userSc;
     @NotNull
-    private String _user;
-    @NotNull
-    private String _password;
+    private String _passwordSc;
     
     public DatabaseSource(){}
     
@@ -40,36 +41,36 @@ public class DatabaseSource {
         this.id = id;
     }
 
-    public String getHost() {
-        return _host;
+    public String getHostSc() {
+        return _hostSc;
     }
 
-    public void setHost(String _host) {
-        this._host = _host;
+    public void setHostSc(String _hostSc) {
+        this._hostSc = _hostSc;
     }
 
-    public String getName() {
-        return _name;
+    public String getNameSc() {
+        return _nameSc;
     }
 
-    public void setName(String _name) {
-        this._name = _name;
+    public void setNameSc(String _nameSc) {
+        this._nameSc = _nameSc;
     }
 
-    public String getUser() {
-        return _user;
+    public String getUserSc() {
+        return _userSc;
     }
 
-    public void setUser(String _user) {
-        this._user = _user;
+    public void setUserSc(String _userSc) {
+        this._userSc = _userSc;
     }
 
-    public String getPassword() {
-        return _password;
+    public String getPasswordSc() {
+        return _passwordSc;
     }
 
-    public void setPassword(String _password) {
-        this._password = _password;
+    public void setPasswordSc(String _passwordSc) {
+        this._passwordSc = _passwordSc;
     }
 
     

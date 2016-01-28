@@ -21,22 +21,22 @@
                     </f:facet>
                     
                     <h:outputLabel value="Host Name:"/>
-                    <h:inputText id="hostname" value="#{savedDatabaseConnection.host}"/>
+                    <h:inputText id="hostname" value="#{savedDatabaseConnectionEntry.host}"/>
                     <h:message for="hostname"/>
                     
                     <h:outputLabel value="Database Name:"/>
-                    <h:inputText id="databaseName" value="#{savedDatabaseConnection.databaseName}"/>
+                    <h:inputText id="databaseName" value="#{savedDatabaseConnectionEntry.databaseName}"/>
                     <h:message for="databaseName"/>
                     
                     <h:outputLabel value="User:"/>
-                    <h:inputText id="user" value="#{savedDatabaseConnection.user}"/>
+                    <h:inputText id="user" value="#{savedDatabaseConnectionEntry.user}"/>
                     <h:message for="user"/>
                     
                     <h:outputLabel value="Password:"/>
-                    <h:inputText id="password" value="#{savedDatabaseConnection.password}"/>
+                    <h:inputText id="password" value="#{savedDatabaseConnectionEntry.password}"/>
                     <h:message for="password"/>
                 </h:panelGrid>
-                <h:commandButton value="Edit Connection" action="#{savedDatabaseConnection.updateDetails}"/>
+                <h:commandButton value="Edit Connection" action="#{savedDatabaseConnectionEntry.updateDetails}"/>
             </div>
             
                 

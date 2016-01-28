@@ -24,7 +24,7 @@ import javax.validation.constraints.NotNull;
 public class NewDatabaseConnection extends DatabaseConnection {
 
     @EJB
-    DatabaseManager dbManager;
+    DatabaseManagerBean dbManager;
 
     /**
      * Creates a new instance of CreateNewDatabaseEntry
@@ -36,10 +36,10 @@ public class NewDatabaseConnection extends DatabaseConnection {
         
         DatabaseSource database = new DatabaseSource();
         
-        database.setName(databaseName);
-        database.setHost(host);
-        database.setPassword(password);
-        database.setUser(user);
+        database.setNameSc(databaseName);
+        database.setHostSc(host);
+        database.setPasswordSc(password);
+        database.setUserSc(user);
         
         
         dbManager.createDatabaseEntry(database);

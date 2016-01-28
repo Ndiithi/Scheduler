@@ -10,49 +10,55 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceUnit;
 import javax.transaction.UserTransaction;
 /**
  *
  * @author mspace-developer
  */
 @Stateless
-public class DatabaseManagerBean implements DatabaseManager{
-    @PersistenceContext(unitName = "smsApp")
-    EntityManagerFactory emf;
+public class DatabaseManagerBean{
+    @PersistenceContext
+    EntityManager em;
     
-    @Resource
-    UserTransaction utx;
-    @Override
     public void updateDatabaseEntry(DatabaseSource dbSource) {
         
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
+    
     public void deleteDatabaseEntry(DatabaseSource dbSource) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
+    
     public Boolean createDatabaseEntry(DatabaseSource dbSource) {
         Boolean isPersistSuccessful=false;
-        EntityManager em=emf.createEntityManager();
+        
         try{
-            utx.begin();
-            em.persist(em);
-            utx.commit();
-            em.close();
-            isPersistSuccessful=true;
+            DatabaseSource databaseSc = new DatabaseSource();
+        
+        databaseSc.setNameSc(dbSource.getNameSc());
+        databaseSc.setHostSc(dbSource.getHostSc());
+        databaseSc.setPasswordSc(dbSource.getPasswordSc());
+        databaseSc.setUserSc(dbSource.getUserSc());
+            
+            em.persist(databaseSc);
+            em.flush();
+//            isPersistSuccessful=true;
+            System.out.println("Saved successfully");
         }catch(Exception e){
             isPersistSuccessful=false;
+            System.out.println(e);
+            System.out.println("no saved");
         }
         
         return isPersistSuccessful;
     }
 
-    @Override
+    
     public List<DatabaseSource> getDatabaseSourceList() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

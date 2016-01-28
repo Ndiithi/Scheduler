@@ -6,13 +6,6 @@
 package com.scheduler.webcore.database;
 
 
-import com.scheduler.database.DatabaseSource;
-
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.validation.constraints.NotNull;
 
 
@@ -20,15 +13,15 @@ import javax.validation.constraints.NotNull;
  *
  * @author towers
  */
-@RequestScoped
+
 public abstract class  DatabaseConnection {
-    @NotNull
+    @NotNull(message = "Host name field is required")
      String host;
-    @NotNull
+    @NotNull(message = "User field is required")
      String user;
-    @NotNull
+    @NotNull(message = "Password field is required")
      String password;
-    @NotNull
+    @NotNull(message = "Database Name field is required")
      String databaseName;
     
     
