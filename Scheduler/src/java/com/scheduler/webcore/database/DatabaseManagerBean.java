@@ -13,6 +13,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceUnit;
+import javax.persistence.Query;
 import javax.transaction.UserTransaction;
 /**
  *
@@ -60,7 +61,10 @@ public class DatabaseManagerBean{
 
     
     public List<DatabaseSource> getDatabaseSourceList() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<DatabaseSource> databaseEntries;
+        Query getDatabaseEntries=em.createQuery("Select databaseEntry from DatabaseSource databaseEntry");
+        databaseEntries=getDatabaseEntries.getResultList();
+        return databaseEntries;
     }
 
 }

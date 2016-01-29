@@ -9,6 +9,7 @@ import com.scheduler.database.DatabaseSource;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import java.util.List;
+import javax.ejb.EJB;
 
 /**
  *
@@ -18,6 +19,10 @@ import java.util.List;
 @RequestScoped
 public class SavedDatabaseConnectionEntry extends DatabaseConnection{
 
+    @EJB
+    private DatabaseManagerBean dbManager;
+    
+    private List<DatabaseSource> databaseEntries;
     /**
      * Creates a new instance of SavedDatabaseConnection
      */
@@ -28,12 +33,18 @@ public class SavedDatabaseConnectionEntry extends DatabaseConnection{
         
     }
     
-    public List<DatabaseSource> fetchDatabaseConnectionEntries(){
-        
-    }
     
     public void deleteDatabaseEntryDetails(){
     
+    }
+
+    public List<DatabaseSource> getDatabaseEntries() {
+        databaseEntries=dbManager.getDatabaseSourceList();
+        return databaseEntries;
+    }
+
+    public void setDatabaseEntries(List<DatabaseSource> databaseEntries) {
+        this.databaseEntries = databaseEntries;
     }
     
 }

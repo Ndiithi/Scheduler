@@ -11,7 +11,7 @@
         
         <ui:define name="content">
            
-            <h:dataTable var="dbentries" value="" >
+            <h:dataTable var="dbentries" value="#{savedDatabaseConnectionEntry.databaseEntries}" >
                 <f:facet name="header">
                     <h:panelGroup>
                         <p class="facet-header">Database entries</p>
@@ -21,17 +21,20 @@
                     <f:facet name="header">
                         <h:outputLabel value="Database"/>
                     </f:facet>
+                    #{dbentries.}
                 </h:column>
                 <h:column>
                     <f:facet name="header">
                         <h:outputLabel value="User"/>
                     </f:facet>
+                    
                 </h:column>
                 <h:column>
                     <f:facet name="header">
                         <h:outputLabel value="Host"/>
                     </f:facet>
                 </h:column>
+                
                 <h:column>
                     <f:facet name="header">
                         <h:outputLabel value="Password"/>
