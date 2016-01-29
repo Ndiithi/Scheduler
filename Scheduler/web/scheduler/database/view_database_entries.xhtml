@@ -10,8 +10,8 @@
         </ui:define>
         
         <ui:define name="content">
-           
-            <h:dataTable var="dbentries" value="#{savedDatabaseConnectionEntry.databaseEntries}" >
+            <div class=" center-text">
+            <h:dataTable styleClass="center text-justify table-border"  var="dbentries" value="#{savedDatabaseConnectionEntry.databaseEntries}" >
                 <f:facet name="header">
                     <h:panelGroup>
                         <p class="facet-header">Database entries</p>
@@ -21,28 +21,29 @@
                     <f:facet name="header">
                         <h:outputLabel value="Database"/>
                     </f:facet>
-                    #{dbentries.}
+                    #{dbentries.databasenameSc}
                 </h:column>
                 <h:column>
                     <f:facet name="header">
                         <h:outputLabel value="User"/>
                     </f:facet>
-                    
+                    #{dbentries.userSc}
                 </h:column>
                 <h:column>
                     <f:facet name="header">
                         <h:outputLabel value="Host"/>
                     </f:facet>
+                    #{dbentries.hostSc}
                 </h:column>
                 
                 <h:column>
                     <f:facet name="header">
                         <h:outputLabel value="Password"/>
                     </f:facet>
-                    
+                    #{dbentries.passwordSc}
                 </h:column>
             </h:dataTable>
-            
+            </div>
         </ui:define>
     </ui:composition>
 </html>

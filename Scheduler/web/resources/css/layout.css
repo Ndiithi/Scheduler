@@ -117,3 +117,6 @@ h1.bannerHeader{
     background-color: #09c7ff;
     color: #040405;        
 }
+.table-border{
+    border: 1px black solid;
+}
