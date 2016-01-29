@@ -21,19 +21,19 @@
                     </f:facet>
                     
                     <h:outputLabel value="Host Name:"/>
-                    <h:inputText id="hostname" value="#{newDatabaseConnection.host}"/>
+                    <h:inputText id="hostname" value="#{newDatabaseConnection.databaseSource.hostSc}"/>
                     <h:message for="hostname"/>
                     
                     <h:outputLabel value="Database Name:"/>
-                    <h:inputText id="databaseName" value="#{newDatabaseConnection.databaseName}"/>
+                    <h:inputText id="databaseName" value="#{newDatabaseConnection.databaseSource.databasenameSc}"/>
                     <h:message for="databaseName"/>
                     
                     <h:outputLabel value="User:"/>
-                    <h:inputText id="user" value="#{newDatabaseConnection.user}"/>
+                    <h:inputText id="user" value="#{newDatabaseConnection.databaseSource.userSc}"/>
                     <h:message for="user"/>
                     
                     <h:outputLabel value="Password:"/>
-                    <h:inputText id="password" value="#{newDatabaseConnection.password}"/>
+                    <h:inputText id="password" value="#{newDatabaseConnection.databaseSource.passwordSc}"/>
                     <h:message for="password"/>
                 </h:panelGrid>
                 

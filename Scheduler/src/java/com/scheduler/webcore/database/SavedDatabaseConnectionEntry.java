@@ -17,7 +17,7 @@ import javax.ejb.EJB;
  */
 @ManagedBean
 @RequestScoped
-public class SavedDatabaseConnectionEntry extends DatabaseConnection{
+public class SavedDatabaseConnectionEntry{
 
     @EJB
     private DatabaseManagerBean dbManager;

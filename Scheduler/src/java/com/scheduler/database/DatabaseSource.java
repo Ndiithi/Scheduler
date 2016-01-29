@@ -17,22 +17,26 @@ import javax.validation.constraints.NotNull;
  * @author towers
  */
 @Entity
-public class DatabaseSource implements Serializable{
+public class DatabaseSource implements Serializable {
+
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    
-    @NotNull(message = "Host name is required")
+
+   
+
+    @NotNull(message = "Host name field is required")
     private String _hostSc;
-    @NotNull
-    private String _nameSc;
-    @NotNull
+     @NotNull(message = "Database Name field is required")
+    private String _databasenameSc;
+    @NotNull(message = "User field is required")
     private String _userSc;
-    @NotNull
+    @NotNull(message = "Password field is required")
     private String _passwordSc;
-    
-    public DatabaseSource(){}
-    
+
+    public DatabaseSource() {
+    }
+
     public int getId() {
         return id;
     }
@@ -49,13 +53,15 @@ public class DatabaseSource implements Serializable{
         this._hostSc = _hostSc;
     }
 
-    public String getNameSc() {
-        return _nameSc;
+    
+     public String getDatabasenameSc() {
+        return _databasenameSc;
     }
 
-    public void setNameSc(String _nameSc) {
-        this._nameSc = _nameSc;
+    public void setDatabasenameSc(String _databasenameSc) {
+        this._databasenameSc = _databasenameSc;
     }
+    
 
     public String getUserSc() {
         return _userSc;
@@ -73,6 +79,4 @@ public class DatabaseSource implements Serializable{
         this._passwordSc = _passwordSc;
     }
 
-    
-    
 }
