@@ -8,6 +8,7 @@ package com.scheduler.webcore.database;
 import com.scheduler.database.DatabaseSource;
 import java.util.List;
 import javax.annotation.Resource;
+import javax.ejb.EJBException;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -21,21 +22,59 @@ import javax.transaction.UserTransaction;
  * @author mspace-developer
  */
 @Stateless
-public class DatabaseManagerBean {
+public class DatabaseManager {
 
     @PersistenceContext
     EntityManager em;
 
-    public void updateDatabaseEntry(DatabaseSource dbSource) {
-
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void updateDatabaseSoureEntry(DatabaseSource dbSource) {
+        DatabaseSource dbSourceInst=(DatabaseSource) em.createNamedQuery("findDatabaseSourceEntryById")
+                .setParameter("id", dbSource.getId())
+                .getSingleResult();
+        try{
+            dbSourceInst.setDatabasenameSc(dbSource.getDatabasenameSc());
+            dbSourceInst.setHostSc(dbSource.getHostSc());
+            dbSourceInst.setPasswordSc(dbSource.getPasswordSc());
+            dbSourceInst.setUserSc(dbSource.getUserSc());
+            
+            em.persist(dbSourceInst);
+            em.flush();
+        }catch(EJBException e){
+        }
+        
+    }
+    
+    public void updateDatabaseSoureEntry(int dbSourceId,String databaseName,String host,String user,String password) {
+        DatabaseSource dbSourceInst=(DatabaseSource) em.createNamedQuery("findDatabaseSourceEntryById")
+                .setParameter("id", dbSourceId)
+                .getSingleResult();
+        try{
+            dbSourceInst.setDatabasenameSc(databaseName);
+            dbSourceInst.setHostSc(host);
+            dbSourceInst.setPasswordSc(password);
+            dbSourceInst.setUserSc(user);
+            
+            em.persist(dbSourceInst);
+            em.flush();
+        }catch(EJBException e){
+        }
     }
 
-    public void deleteDatabaseEntry(DatabaseSource dbSource) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void deleteDatabaseSoureEntry(Integer dbSourceId) {
+        try{
+            Query query=em.createNamedQuery("findDatabaseSourceEntryById")
+                    .setParameter("id", dbSourceId);
+           DatabaseSource dbSource= (DatabaseSource) query.getSingleResult();
+        em.remove(dbSource);
+        }catch(EJBException e){
+            
+           
+            throw new EJBException(e.getMessage());
+        }
+        
     }
 
-    public Boolean createDatabaseEntry(DatabaseSource dbSource) {
+    public Boolean createDatabaseSourecEntry(DatabaseSource dbSource) {
         Boolean isPersistSuccessful;
 
         try {
@@ -53,7 +92,7 @@ public class DatabaseManagerBean {
         return isPersistSuccessful;
     }
 
-    public Boolean createDatabaseEntry(String user, String host, String password, String databaseName) {
+    public Boolean createDatabaseSourceEntry(String user, String host, String password, String databaseName) {
         Boolean isPersistSuccessful;
 
         try {

@@ -12,31 +12,32 @@
         
         <ui:define name="content">
              <div class=" center-text">
+                 <h:inputHidden value="#{savedDatabaseConnectionEntry.dbSource.id}"/>
                 <h:panelGrid columns="3" styleClass="center text-justify">
                     <f:facet name="header">
                         <h:panelGroup>
-                            <p class="facet">Edit Database Connection</p>
+                            <p class="facet-header">Edit Database Connection</p>
                             <br/>
                         </h:panelGroup>  
                     </f:facet>
                     
                     <h:outputLabel value="Host Name:"/>
-                    <h:inputText id="hostname" value="#{savedDatabaseConnectionEntry.host}"/>
+                    <h:inputText id="hostname" value="#{savedDatabaseConnectionEntry.dbSource.hostSc}"/>
                     <h:message for="hostname"/>
                     
                     <h:outputLabel value="Database Name:"/>
-                    <h:inputText id="databaseName" value="#{savedDatabaseConnectionEntry.databaseName}"/>
+                    <h:inputText id="databaseName" value="#{savedDatabaseConnectionEntry.dbSource.databasenameSc}"/>
                     <h:message for="databaseName"/>
                     
                     <h:outputLabel value="User:"/>
-                    <h:inputText id="user" value="#{savedDatabaseConnectionEntry.user}"/>
+                    <h:inputText id="user" value="#{savedDatabaseConnectionEntry.dbSource.userSc}"/>
                     <h:message for="user"/>
                     
                     <h:outputLabel value="Password:"/>
-                    <h:inputText id="password" value="#{savedDatabaseConnectionEntry.password}"/>
+                    <h:inputText id="password" value="#{savedDatabaseConnectionEntry.dbSource.passwordSc}"/>
                     <h:message for="password"/>
                 </h:panelGrid>
-                <h:commandButton value="Edit Connection" action="#{savedDatabaseConnectionEntry.updateDetails}"/>
+                 <h:commandButton value="Update" action="#{savedDatabaseConnectionEntry.updateDatabaseEntryDetails}"/>
             </div>
             
                 

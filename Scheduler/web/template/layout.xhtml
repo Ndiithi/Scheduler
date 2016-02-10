@@ -12,7 +12,6 @@
         <h:outputStylesheet name="/css/layout.css"/>
     </h:head>
     <script> $(document).ready(
-                
                 function () {
                     $("#databaseMenu").hide();
                     $("#scheduleMenu").hide();
@@ -37,29 +36,29 @@
     <h:body>
         <h:form >
             <div class="wrapper">
-                
+
                 <div class="header">
                     <h1 class="bannerHeader">Sms Scheduler </h1>
                 </div>
-                
+
                 <div class="menuBar">
 
 
                     <a class="menu margin" id="database" href="#">Database</a>
 
                     <div class="subMenu" id="databaseMenu" >
-                        
-                            <ul>
-                                <li>
-                                    <h:outputLink styleClass="menuitem flatlink" id="newDbCon"  value="/Scheduler/faces/scheduler/database/create_database.xhtml">New Database Connection</h:outputLink>
-                                  
-                                </li>
-                                <li>
-                                    <h:outputLink styleClass="menuitem flatlink" id="viewDbConn"  value="/Scheduler/faces/scheduler/database/view_database_entries.xhtml">View Database Connection</h:outputLink>
-                                </li>
-                            </ul>
-                                           
-                        
+
+                        <ul>
+                            <li>
+                                <h:outputLink styleClass="menuitem flatlink" id="newDbCon"  value="/Scheduler/faces/scheduler/database/create_database.xhtml">New Database Connection</h:outputLink>
+
+                            </li>
+                            <li>
+                                <h:outputLink styleClass="menuitem flatlink" id="viewDbConn"  value="/Scheduler/faces/scheduler/database/view_database_entries.xhtml">View Database Connection</h:outputLink>
+                            </li>
+                        </ul>
+
+
 
 
                     </div>
@@ -67,10 +66,10 @@
 
                     <div class="subMenu" id="scheduleMenu">
                         <ul>
-                            <li><h:outputLink styleClass="menuitem flatlink" id="newSchedule" value="New Schedule"/></li>
-                            <li><h:outputLink styleClass="menuitem flatlink" id="viewSchedules" value="View Schedules"/></li>
+                            <li><h:outputLink styleClass="menuitem flatlink" id="newSchedule" value="/Scheduler/faces/scheduler/schedule/create_new_schedule.xhtml">New Schedule</h:outputLink></li>
+                            <li><h:outputLink styleClass="menuitem flatlink" id="viewSchedules" value="/Scheduler/faces/scheduler/schedule/view_schedules.xhtml">View Schedules</h:outputLink></li>
                         </ul>
-                
+
                     </div>
 
 
@@ -78,14 +77,15 @@
                 </div>
 
 
+
                 <div class="content">
                     <ui:insert name="content"/>   
                 </div>
 
-                <div class="footer">
-                    <ui:include src="/template/footer.xhtml"></ui:include>
-                </div>
 
+                <div class="footer">
+                    <ui:include  src="/template/footer.xhtml"></ui:include>
+                </div>
             </div>
         </h:form>
     </h:body>

@@ -8,41 +8,52 @@
         <ui:define name="title">
             View Database Entries
         </ui:define>
-        
+
         <ui:define name="content">
             <div class=" center-text">
-            <h:dataTable styleClass="center text-justify table-border"  var="dbentries" value="#{savedDatabaseConnectionEntry.databaseEntries}" >
-                <f:facet name="header">
-                    <h:panelGroup>
-                        <p class="facet-header">Database entries</p>
-                    </h:panelGroup>
-                </f:facet>
-                <h:column>
+                <h:dataTable styleClass="center text-justify table-border" cellspacing="10px"  var="dbentries" value="#{savedDatabaseConnectionEntry.databaseEntries}" >
                     <f:facet name="header">
-                        <h:outputLabel value="Database"/>
+                        <h:panelGroup>
+                            <p class="facet-header">Database entries</p>
+                        </h:panelGroup>
                     </f:facet>
-                    #{dbentries.databasenameSc}
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                        <h:outputLabel value="User"/>
-                    </f:facet>
-                    #{dbentries.userSc}
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                        <h:outputLabel value="Host"/>
-                    </f:facet>
-                    #{dbentries.hostSc}
-                </h:column>
-                
-                <h:column>
-                    <f:facet name="header">
-                        <h:outputLabel value="Password"/>
-                    </f:facet>
-                    #{dbentries.passwordSc}
-                </h:column>
-            </h:dataTable>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputLabel value="Database"/>
+                        </f:facet>
+                        #{dbentries.databasenameSc}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputLabel value="User"/>
+                        </f:facet>
+                        #{dbentries.userSc}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputLabel value="Host"/>
+                        </f:facet>
+                        #{dbentries.hostSc}
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputLabel value="Password"/>
+                        </f:facet>
+                        #{dbentries.passwordSc}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputLabel value="Action"/>
+                        </f:facet>
+                        <h:commandButton value=" Edit" action="edit_database_entry">
+                            <f:setPropertyActionListener target="#{savedDatabaseConnectionEntry.dbSource}" value="#{dbentries}"/>
+                        </h:commandButton>
+                        <h:commandButton value="Delete" actionListener="#{savedDatabaseConnectionEntry.deleteDatabaseEntryDetails}">
+                            <f:param name="datasourceid" id="datasourceid" value="#{dbentries.id}"/>
+                        </h:commandButton>
+                    </h:column>
+                </h:dataTable>
             </div>
         </ui:define>
     </ui:composition>

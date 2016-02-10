@@ -20,7 +20,7 @@ import javax.faces.bean.RequestScoped;
 public class NewDatabaseConnection{
 
     @EJB
-    private DatabaseManagerBean dbManager;
+    private DatabaseManager dbManager;
     private DatabaseSource databaseSource=new DatabaseSource();
 
     /**
@@ -30,7 +30,7 @@ public class NewDatabaseConnection{
     }
 
     public void persistDatabaseDetails() {
-        dbManager.createDatabaseEntry(databaseSource);
+        dbManager.createDatabaseSourecEntry(databaseSource);
     }
 
     public DatabaseSource getDatabaseSource() {
@@ -38,6 +38,7 @@ public class NewDatabaseConnection{
     }
 
     public void setDatabaseSource(DatabaseSource databaseSource) {
+        
         this.databaseSource = databaseSource;
     }
 

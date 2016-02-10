@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="/template/layout.xhtml">
+
+        <ui:define name="title">
+            Create Schedule
+        </ui:define>
+
+        <ui:define name="content">
+            <div class=" center-text">
+                <h:panelGrid styleClass="center text-justify">
+                    <f:facet name="header">
+                        <h:panelGroup>
+                            <p class="facet-header">Create New Schedule</p>
+                            <br/>
+                        </h:panelGroup>
+                    </f:facet>    
+                
+                <h:panelGrid columns="3" styleClass="center text-justify">
+                    <h:outputLabel value="Schedule Name"/>
+                    <h:inputText id="schedulename"/>
+                    <h:message for="schedulename"/>
+
+                </h:panelGrid>
+                <br/>
+                <h:panelGrid columns="3" styleClass="center text-justify" style="border: 2px #8cff00 solid">
+                    <f:facet name="header">
+                        <h:panelGroup >
+                            <p class="facet-header">Compose Reply SMS</p>
+                            <br/>
+                        </h:panelGroup>  
+                    </f:facet>
+                    <h:outputLabel value="Select Connection"/>
+                    <h:selectOneMenu value="one" id="dbconn">
+                        <f:selectItems  value="#{schduleSupport.dbConn}"/>
+                    </h:selectOneMenu>
+                    <h:message for="dbconn"/>
+
+                    <h:outputLabel value="SQL To Run:"/>
+                    <h:inputTextarea id="sqlarea" rows="12" cols="41"/>
+                    <h:message for="sqlarea"/>
+
+                    <h:inputHidden/>
+                    <h:panelGroup>
+                        <h:commandLink styleClass="button" style="margin-right: 10px;" value="Run SQL"/>
+                        <h:commandLink styleClass="button" value="Compose Reply SMS"/>
+                    </h:panelGroup>
+
+                </h:panelGrid >
+                <br/>
+
+                <h:panelGrid  styleClass="center text-justify">
+
+                    <h:panelGrid columns="2">
+                        
+                        <h:panelGroup>
+                            <h:outputLabel value="Frequency:"/>
+                            <h:inputText id="frequency"/>
+                            <h:message for="frequency"/>
+                        </h:panelGroup>
+                      
+                        
+                        <h:panelGroup>
+                            <h:outputLabel value="Period"/>
+                            <h:inputText id="period"/>
+                            <h:message for="period"/>
+                        </h:panelGroup>
+                        
+                        
+
+                    </h:panelGrid>
+                    
+                    <h:panelGrid columns="3" styleClass="center text-justify">
+                        <h:outputLabel value="Time to run:"/>
+                        <h:inputText id="timetorun"/>
+                        <h:message for="timetorun"/>
+                    </h:panelGrid>
+                    
+                </h:panelGrid>
+                <h:panelGrid styleClass="text-justify" style="margin-top: 15px; margin-left: auto; margin-right: auto; margin-bottom: 5px; padding: 7px;">
+                    <h:commandLink styleClass="button button-large" value="Save Schedule"/>
+                </h:panelGrid>
+</h:panelGrid>
+            </div>
+        </ui:define>
+
+
+
+    </ui:composition>
+</html>
+
