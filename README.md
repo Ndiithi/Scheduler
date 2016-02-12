@@ -1,2 +1,2 @@
 # SmsScheduler
-Project to learn java ee and good coding practice
+Simple SMS scheduler implemented with jsf, ejb and jpa
