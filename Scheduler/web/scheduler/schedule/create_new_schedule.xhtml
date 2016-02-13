@@ -21,7 +21,7 @@
                     </f:facet>    
                     <h:panelGrid columns="3" styleClass="center text-justify">
                         <h:outputLabel value="Schedule Name"/>
-                        <h:inputText id="schedulename"/>
+                        <h:inputText id="schedulename" value="#{newSchedule.schedule.scheduleName}"/>
                         <h:message for="schedulename"/>
 
                     </h:panelGrid>
@@ -34,13 +34,13 @@
                             </h:panelGroup>  
                         </f:facet>
                         <h:outputLabel value="Select Connection"/>
-                        <h:selectOneMenu value="one" id="dbconn">
+                        <h:selectOneMenu value="#{newSchedule.datbaseconnId}" id="dbconn">
                             <f:selectItems  value="#{schduleSupport.dbConn}"/>
                         </h:selectOneMenu>
                         <h:message for="dbconn"/>
 
                         <h:outputLabel value="SQL To Run:"/>
-                        <h:inputTextarea id="sqlarea" rows="12" cols="41"/>
+                        <h:inputTextarea value="#{newSchedule.schedule.sqlToRun}" id="sqlarea" rows="12" cols="41"/>
                         <h:message for="sqlarea"/>
 
                         <h:inputHidden/>
@@ -65,7 +65,7 @@
 
                         <h:panelGrid columns="2" styleClass="center text-justify">
                             <h:outputLabel value="Reply SMS:"/>
-                            <h:inputTextarea rows="12" cols="41"/>
+                            <h:inputTextarea value="#{newSchedule.schedule.replySms}" rows="12" cols="41"/>
                         </h:panelGrid>
 
 
@@ -80,14 +80,21 @@
 
                             <h:panelGroup>
                                 <h:outputLabel value="Frequency:"/>
-                                <h:inputText id="frequency"/>
+                                <h:inputText value="#{newSchedule.schedule.frequency}" id="frequency"/>
                                 <h:message for="frequency"/>
                             </h:panelGroup>
 
 
                             <h:panelGroup>
-                                <h:outputLabel value="Period"/>
-                                <h:inputText id="period"/>
+                                <h:outputLabel value="Period:"/>
+                                <h:selectOneMenu value="#{newSchedule.period}" id="period">
+                                    <f:selectItem itemLabel="HOURLY" itemValue="HOURLY"/>
+                                    <f:selectItem itemLabel="DAILY" itemValue="DAILY"/>
+                                    <f:selectItem itemLabel="WEEKLY" itemValue="WEEKLY"/>
+                                    <f:selectItem itemLabel="MOTHLY" itemValue="MOTHLY"/>
+                                    <f:selectItem itemLabel="YEARLY" itemValue="YEARLY"/>
+                                    
+                                </h:selectOneMenu>
                                 <h:message for="period"/>
                             </h:panelGroup>
 
@@ -97,13 +104,13 @@
 
                         <h:panelGrid columns="3" styleClass="center text-justify">
                             <h:outputLabel value="Time to run:"/>
-                            <h:inputText id="timetorun"/>
+                            <h:inputText id="timetorun" value="#{newSchedule.timeToRun}"/>
                             <h:message for="timetorun"/>
                         </h:panelGrid>
 
                     </h:panelGrid >
                     <h:panelGrid styleClass="text-justify" style="margin-top: 15px; margin-left: auto; margin-right: auto; margin-bottom: 5px; padding: 7px;">
-                        <h:commandLink styleClass="button button-large" value="Save Schedule"/>
+                        <h:commandLink styleClass="button button-large" action="#{newSchedule.persistSchedule}" value="Save Schedule"/>
                     </h:panelGrid>
                 </h:panelGrid>
             </div>
