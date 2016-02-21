@@ -5,7 +5,7 @@
  */
 package com.scheduler.webcore.schedule;
 
-import com.scheduler.database.DatabaseSource;
+import com.scheduler.schedulerdatabase.DatabaseSource;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import java.io.Serializable;

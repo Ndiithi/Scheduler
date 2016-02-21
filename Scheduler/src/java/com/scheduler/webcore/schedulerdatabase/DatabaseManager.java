@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.scheduler.webcore.database;
+package com.scheduler.webcore.schedulerdatabase;
 
-import com.scheduler.database.DatabaseSource;
+import com.scheduler.schedulerdatabase.DatabaseSource;
 import java.util.List;
 import javax.annotation.Resource;
 import javax.ejb.EJBException;
@@ -76,10 +76,11 @@ public class DatabaseManager {
 
     public Boolean createDatabaseSourecEntry(DatabaseSource dbSource) {
         Boolean isPersistSuccessful;
-
+        System.out.println("createDatabaseSourecEntry()init--- "+dbSource);
         try {
 
             em.persist(dbSource);
+            System.out.println("createDatabaseSourecEntry()persist--- "+dbSource);
             em.flush();
             isPersistSuccessful = true;
             System.out.println("Saved successfully");

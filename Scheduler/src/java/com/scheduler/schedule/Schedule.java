@@ -5,7 +5,7 @@
  */
 package com.scheduler.schedule;
 
-import com.scheduler.database.DatabaseSource;
+import com.scheduler.schedulerdatabase.DatabaseSource;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.CascadeType;

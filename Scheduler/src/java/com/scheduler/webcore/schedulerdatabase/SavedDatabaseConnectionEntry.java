@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.scheduler.webcore.database;
+package com.scheduler.webcore.schedulerdatabase;
 
-import com.scheduler.database.DatabaseSource;
+import com.scheduler.schedulerdatabase.DatabaseSource;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import java.util.List;

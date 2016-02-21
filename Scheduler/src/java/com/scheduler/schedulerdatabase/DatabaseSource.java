@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.scheduler.database;
+package com.scheduler.schedulerdatabase;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
@@ -36,8 +36,15 @@ public class DatabaseSource implements Serializable {
     @NotNull(message = "Password field is required")
     private String _passwordSc;
 
-    public DatabaseSource() {
+     public DatabaseSource() {
     }
+    
+    @Override
+    public String toString() {
+        return  _hostSc +"-"+ _databasenameSc +"-"+  _userSc +"-"+ _userSc +"-"+   _passwordSc ;
+    }
+
+   
 
     public int getId() {
         return id;

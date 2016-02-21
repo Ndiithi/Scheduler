@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.scheduler.webcore.database;
+package com.scheduler.webcore.schedulerdatabase;
 
-import com.scheduler.database.DatabaseSource;
+import com.scheduler.schedulerdatabase.DatabaseSource;
 import javax.ejb.EJB;
 
 import javax.faces.bean.ManagedBean;
@@ -30,6 +30,7 @@ public class NewDatabaseConnection{
     }
 
     public void persistDatabaseDetails() {
+        System.out.println("persistDatabase()-- "+databaseSource);
         dbManager.createDatabaseSourecEntry(databaseSource);
     }
 
