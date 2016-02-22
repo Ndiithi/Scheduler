@@ -35,7 +35,7 @@ public class DatabaseConnection {
 			Class.forName("com.mysql.jdbc.Driver"); 
 			try {   System.out.println( "db 4rm dbcon round 2 "+databaseName+" "+databaseUser+" "+databasePassword);
 				//conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/'"+databaseName+"'"+","+databaseUser+","+databasePassword);
-                        conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/persistence","root", "duncantowers");
+                        conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/persistence","mysql", "mysql123");
 				System.out.println("connection estblished");
 			} catch (SQLException e) {
                             e.printStackTrace();

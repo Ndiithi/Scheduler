@@ -49,7 +49,7 @@
                             <h:outputLabel value="Action"/>
                         </f:facet>
                         <h:commandButton value=" Edit" action="edit_schedule">
-                            <f:setPropertyActionListener target="#{scheduleList.schedule}" value="#{sch}"/>
+                            <f:setPropertyActionListener target="#{scheduleProcessor.schedule}" value="#{sch}"/>
                         </h:commandButton>
                         <h:commandButton value="Delete" actionListener="#{scheduleList.deleteSchedule}">
                             <f:param name="scheduleid" id="scheduleid" value="#{sch.scheduleId}"/>
