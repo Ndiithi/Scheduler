@@ -77,6 +77,7 @@ public class ScheduleManagerBean {
             Schedule schedule = new Schedule();
             SimpleDateFormat smf = new SimpleDateFormat("yyyy-mm-dd");
             Date scheduleDate = smf.parse(date);
+            System.out.println("Date after creating: "+scheduleDate);
             Period schedulePeriod;
             if (period.equals("HOURLY")) {
                 schedulePeriod = Period.HOURLY;
@@ -112,21 +113,22 @@ public class ScheduleManagerBean {
 
     public boolean updateSchedule(
             Long scheduleId,
-            int dbConnectionId,
+            Long dbConnectionId,
             String scheduleName,
             String sqlToRun,
             String replySms,
             int frequency,
-            Period period,
+            String period,
             String date) {
-
+        Schedule scheduleToUpdate=(Schedule) em.createNamedQuery("getScheduleById").setParameter("id", scheduleId).getSingleResult();
         SimpleDateFormat smf = new SimpleDateFormat("yyyy-mm-dd");
         Period schedulePeriod=null;
          Date scheduleDate=null;
+         Boolean isSucccesful=false;
         try {
              scheduleDate = smf.parse(date);
 
-            
+            System.out.println("Date after updating: "+scheduleDate);
             if (period.equals("HOURLY")) {
                 schedulePeriod = Period.HOURLY;
             } else if (period.equals("DAILY")) {
@@ -140,38 +142,29 @@ public class ScheduleManagerBean {
             } else {
                 throw new Exception("Unknow Schedule Period");
             }
-        } catch (ParseException ex) {
+      
+        
+            
+            DatabaseSource dbSource = (DatabaseSource) em.createNamedQuery("findDatabaseSourceEntryById").setParameter("id", dbConnectionId).getSingleResult();
+           
+            scheduleToUpdate.setFreqPeriod(schedulePeriod);
+            scheduleToUpdate.setFrequency(frequency);
+            scheduleToUpdate.setDate(scheduleDate);
+            scheduleToUpdate.setReplySms(replySms);
+            scheduleToUpdate.setScheduleName(scheduleName);
+            scheduleToUpdate.setSqlToRun(sqlToRun);
+            scheduleToUpdate.setDbConnection(dbSource);
+            em.merge(scheduleToUpdate);
+            em.flush();
+         isSucccesful = true;
+
+          } catch (ParseException ex) {
             Logger.getLogger(ScheduleManagerBean.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception e) {
             e.printStackTrace();
         }
         
-            
-            DatabaseSource dbSource = (DatabaseSource) em.createNamedQuery("findDatabaseSourceEntryById").setParameter("id", dbConnectionId).getSingleResult();
-           
-        Boolean isSucccesful = false;
-        String jpql = "Update Schedule c set "
-                + "c.scheduleName='" + scheduleName + "',"
-                + " c.sqlToRun='" + sqlToRun + "',"
-                + " c.replySms='" + replySms + "', "
-                + "c.frequency='" + frequency + "',"
-                + " c.freqPeriod='" + schedulePeriod + "'"
-                +"c.date='"+scheduleDate+"'"
-                +"c.dbConnection='"+dbSource+"'"
-                + "where c.scheduleId='" + scheduleId + "'";
-        try {
-            int updatedRecords = em.createQuery(jpql).executeUpdate();
-            if (updatedRecords > 0) {
-                isSucccesful = true;
-                return isSucccesful;
-            } else {
-                return isSucccesful;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return isSucccesful;
-        }
-
+        return isSucccesful;
     }
 
 

@@ -34,36 +34,38 @@
                     </f:facet>    
                     <h:panelGrid columns="3" styleClass="center text-justify">
                         <h:outputLabel value="Schedule Name"/>
-                        <h:inputText id="schedulename" value="#{scheduleProcessor.schedule.scheduleName}"/>
+                        <h:inputText id="schedulename" value="#{createSchedule.schedule.scheduleName}"/>
                         <h:message for="schedulename"/>
 
                     </h:panelGrid>
                     <br/>
-                    <h:panelGrid rendered="#{backing.isCreateSqlPanelRendered}" columns="3" styleClass="center text-justify" style="border: 2px #8cff00 solid">
+                    <h:inputHidden value="#{createScheduleBackingBean.isCreateSqlPanelRendered}"/>
+                    <h:panelGrid rendered="#{createScheduleBackingBean.isCreateSqlPanelRendered}" columns="3" styleClass="center text-justify" style="border: 2px #8cff00 solid">
                         <f:facet name="header">
                             <h:panelGroup >
                                 <p class="facet-header">Compose Reply SMS</p>
                                 <br/>
                             </h:panelGroup>  
                         </f:facet>
+                        
                         <h:outputLabel value="Select Connection"/>
-                        <h:selectOneMenu value="#{scheduleProcessor.datbaseconnId}" id="dbconn">
+                        <h:selectOneMenu value="#{createSchedule.datbaseconnId}" id="dbconn">
                             <f:selectItems  value="#{schduleSupport.dbConn}"/>
                         </h:selectOneMenu>
                         <h:message for="dbconn"/>
 
                         <h:outputLabel value="SQL To Run:"/>
-                        <h:inputTextarea value="#{scheduleProcessor.schedule.sqlToRun}" id="sqlarea" rows="12" cols="41"/>
+                        <h:inputTextarea value="#{createSchedule.schedule.sqlToRun}" id="sqlarea" rows="12" cols="41"/>
                         <h:message for="sqlarea"/>
 
                         <h:inputHidden/>
                         <h:panelGroup >
-                            <h:commandLink styleClass="button" action="#{scheduleProcessor.generateSampleDataFromSql}" style="margin-right: 10px;" value="Run SQL"/>
-                            <h:commandLink styleClass="button" action="#{scheduleProcessor.generateSampleDataFromSqlReply}" value="Compose Reply SMS"/>
+                            <h:commandLink styleClass="button" action="#{createSchedule.generateSampleDataFromSql}" style="margin-right: 10px;" value="Run SQL"/>
+                            <h:commandLink styleClass="button" action="#{createSchedule.generateSampleDataFromSqlReply}" value="Compose Reply SMS"/>
                         </h:panelGroup>
                         <h:outputLabel/>
                         <h:outputLabel/>
-                        <h:panelGroup binding="#{scheduleProcessor.dynamicDataTableGroupViewResult}">
+                        <h:panelGroup binding="#{createSchedule.dynamicDataTableGroupViewResult}">
 
                         </h:panelGroup>
 
@@ -71,20 +73,20 @@
 
 
                     </h:panelGrid >
-
-                    <h:panelGrid rendered="#{backing.isReplySmsPanelRendered}" style="border: 2px #8cff00 solid" styleClass="center center-text">
+                    <h:inputHidden value="#{createScheduleBackingBean.isReplySmsPanelRendered}"/>
+                    <h:panelGrid rendered="#{createScheduleBackingBean.isReplySmsPanelRendered}" style="border: 2px #8cff00 solid" styleClass="center center-text">
                         <f:facet name="header">
                             <h:panelGroup >
                                 <p class="facet-header">Compose Reply SMS</p>
                                 <br/>
                             </h:panelGroup>  
                         </f:facet>
-                        <h:commandLink styleClass="button" action="#{scheduleProcessor.generateSampleDataFromSql}"  value="Back"/>
-                        <h:inputHidden value="#{scheduleProcessor.schedule.sqlToRun}"/>
-                        <h:inputHidden value="#{scheduleProcessor.datbaseconnId}"/>
+                        <h:commandLink styleClass="button" action="#{createSchedule.generateSampleDataFromSql}"  value="Back"/>
+                        <h:inputHidden value="#{createSchedule.schedule.sqlToRun}"/>
+                        <h:inputHidden value="#{createSchedule.datbaseconnId}"/>
                         
                         
-                        <ui:repeat  value="#{scheduleProcessor.columns}" var="colName">
+                        <ui:repeat  value="#{createSchedule.columns}" var="colName">
                             <h:panelGrid styleClass="center center-text" columns="2">
                                 <h:outputText value="#{colName}: " />
                                 <h:selectBooleanCheckbox  onclick="generatePlaceholder(this)" title="#{colName}"/>
@@ -95,17 +97,17 @@
 
                         <h:panelGrid  id="replySmsGrid" columns="2" styleClass="center text-justify">
                             <h:outputLabel value="Reply SMS:"/>
-                            <h:inputTextarea  id="replySms" value="#{scheduleProcessor.schedule.replySms}" rows="12" cols="41"/>
+                            <h:inputTextarea  id="replySms" value="#{createSchedule.schedule.replySms}" rows="12" cols="41"/>
                         </h:panelGrid>
 
 
-                        <h:commandLink action="#{scheduleProcessor.generateSampleSms}" styleClass="button button-large" value="Compose Sample" style="margin-top: 15px; margin-left: auto; margin-right: auto; margin-bottom: 5px;"/>
+                        <h:commandLink action="#{createSchedule.generateSampleSms}" styleClass="button button-large" value="Compose Sample" style="margin-top: 15px; margin-left: auto; margin-right: auto; margin-bottom: 5px;"/>
                         
                             <br/>
                             
                         
-                        <h:outputText  value="Sample sms: #{scheduleProcessor.sampleSms}"/>
-                        <h:panelGroup binding="#{scheduleProcessor.dynamicDataTableGroupComposeReply}">
+                        <h:outputText  value="Sample sms: #{createSchedule.sampleSms}"/>
+                        <h:panelGroup binding="#{createSchedule.dynamicDataTableGroupComposeReply}">
 
 
                         </h:panelGroup>
@@ -120,14 +122,14 @@
 
                             <h:panelGroup>
                                 <h:outputLabel value="Frequency:"/>
-                                <h:inputText value="#{scheduleProcessor.schedule.frequency}" id="frequency"/>
+                                <h:inputText value="#{createSchedule.schedule.frequency}" id="frequency"/>
                                 <h:message for="frequency"/>
                             </h:panelGroup>
 
 
                             <h:panelGroup>
                                 <h:outputLabel value="Period:"/>
-                                <h:selectOneMenu value="#{scheduleProcessor.period}" id="period">
+                                <h:selectOneMenu value="#{createSchedule.period}" id="period">
                                     <f:selectItem itemLabel="HOURLY" itemValue="HOURLY"/>
                                     <f:selectItem itemLabel="DAILY" itemValue="DAILY"/>
                                     <f:selectItem itemLabel="WEEKLY" itemValue="WEEKLY"/>
@@ -145,7 +147,7 @@
                         <h:panelGrid columns="3" styleClass="center text-justify">
                             <h:outputLabel value="Time to run:"/>
                             <h:panelGroup>
-                                <h:inputText id="timetorun" value="#{scheduleProcessor.timeToRun}"/>
+                                <h:inputText id="timetorun" value="#{createSchedule.timeToRun}"/>
                                 <h:outputLabel value="eg (2016-12-29)"/>
                             </h:panelGroup>
                             
@@ -154,7 +156,7 @@
 
                     </h:panelGrid >
                     <h:panelGrid styleClass="text-justify" style="margin-top: 15px; margin-left: auto; margin-right: auto; margin-bottom: 5px; padding: 7px;">
-                        <h:commandLink styleClass="button button-large" action="#{scheduleProcessor.persistSchedule}" value="Save Schedule"/>
+                        <h:commandLink styleClass="button button-large" action="#{createSchedule.persistSchedule}" value="Save Schedule"/>
                     </h:panelGrid>
                 </h:panelGrid>
             </div>

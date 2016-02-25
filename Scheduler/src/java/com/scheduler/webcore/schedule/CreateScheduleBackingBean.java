@@ -8,20 +8,21 @@ package com.scheduler.webcore.schedule;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import javax.enterprise.context.RequestScoped;
 
 /**
  *
  * @author towers
  */
-@Named(value = "backing")
+@Named
 @SessionScoped
-public class Backing implements Serializable {
+public class CreateScheduleBackingBean implements Serializable {
 private Boolean isReplySmsPanelRendered=false;
 private Boolean isCreateSqlPanelRendered=true;
     /**
      * Creates a new instance of Backing
      */
-    public Backing() {
+    public CreateScheduleBackingBean() {
     }
 
     public Boolean getIsReplySmsPanelRendered() {

@@ -5,17 +5,21 @@
  */
 package com.scheduler.webcore.schedule;
 
+import com.scheduler.schedule.Period;
 import com.scheduler.schedule.Schedule;
+import com.scheduler.schedulerdatabase.DatabaseSource;
 import static com.sun.faces.el.ELUtils.createValueExpression;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.component.html.HtmlColumn;
 import javax.faces.component.html.HtmlDataTable;
 import javax.faces.component.html.HtmlOutputText;
 import javax.faces.component.html.HtmlPanelGroup;
+import javax.faces.component.html.HtmlSelectOneMenu;
 import javax.inject.Inject;
 import javax.validation.constraints.NotNull;
 
@@ -25,7 +29,7 @@ import javax.validation.constraints.NotNull;
  */
 @Named
 @RequestScoped
-public class ScheduleProcessor implements Serializable {
+public class UpdateSchedule implements Serializable {
 
     @EJB
     private ScheduleManagerBean smb;
@@ -37,20 +41,24 @@ public class ScheduleProcessor implements Serializable {
     @Inject
     private ScheduleUtility scheduleUtility;
     @Inject 
-    Backing backing;
+    private UpdateScheduleBackingBean backing;
     private List<List> rowsData;
     private List<String> columns;
     private HtmlPanelGroup dynamicDataTableGroupViewResult;
     private HtmlPanelGroup dynamicDataTableGroupComposeReply;
     private String sampleSms="";
+    private HtmlSelectOneMenu htmlSelectOneMenu;
     /**
      * Creates a new instance of new_schedule
      */
-    public ScheduleProcessor() {
+    public UpdateSchedule() {
     }
 
-    public void persistSchedule() {
-        smb.createSchedule(datbaseconnId,
+   
+    
+    public void updateSchedule(){
+        smb.updateSchedule(schedule.getScheduleId(),
+                datbaseconnId,
                 schedule.getScheduleName(),
                 schedule.getSqlToRun(),
                 schedule.getReplySms(),
@@ -95,8 +103,6 @@ public class ScheduleProcessor implements Serializable {
         }
 
         // Add the datatable to <h:panelGroup binding="#{myBean.dynamicDataTableGroupViewResult}">.dynamicDataTableGroupViewResult = new HtmlPanelGroup();
-        
-        
         
         
         
@@ -150,6 +156,11 @@ public class ScheduleProcessor implements Serializable {
     }
 
     public String getTimeToRun() {
+        if(schedule.getDate()!=null){
+            SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+        timeToRun=sdf.format(schedule.getDate());
+        }
+        
         return timeToRun;
     }
 
@@ -211,6 +222,31 @@ public class ScheduleProcessor implements Serializable {
 
     public void setSampleSms(String sampleSms) {
         this.sampleSms = sampleSms;
+    }
+
+   
+
+    public HtmlSelectOneMenu getHtmlSelectOneMenu() {
+        
+            System.out.println("Set Value for htmlSelectOneMenu");
+        DatabaseSource dbsrc=schedule.getDbConnection();
+        htmlSelectOneMenu=new HtmlSelectOneMenu();
+        htmlSelectOneMenu.setValue(dbsrc.getId());
+        String label=dbsrc.getHostSc()+"-"+dbsrc.getDatabasenameSc()+"-"+dbsrc.getUserSc();
+        htmlSelectOneMenu.setLabel(label);
+        return htmlSelectOneMenu;
+    }
+
+    public void setHtmlSelectOneMenu(HtmlSelectOneMenu htmlSelectOneMenu) {
+        this.htmlSelectOneMenu = htmlSelectOneMenu;
+    }
+
+    public UpdateScheduleBackingBean getBacking() {
+        return backing;
+    }
+
+    public void setBacking(UpdateScheduleBackingBean backing) {
+        this.backing = backing;
     }
 
 }

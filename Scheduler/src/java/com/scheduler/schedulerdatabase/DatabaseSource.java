@@ -27,13 +27,13 @@ public class DatabaseSource implements Serializable {
 
    
 
-    @NotNull(message = "Host name field is required")
+ //   @NotNull(message = "Host name field is required")
     private String _hostSc;
-     @NotNull(message = "Database Name field is required")
+  //   @NotNull(message = "Database Name field is required")
     private String _databasenameSc;
-    @NotNull(message = "User field is required")
+ //   @NotNull(message = "User field is required")
     private String _userSc;
-    @NotNull(message = "Password field is required")
+  //  @NotNull(message = "Password field is required")
     private String _passwordSc;
 
      public DatabaseSource() {
