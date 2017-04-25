@@ -16,7 +16,7 @@ import javax.faces.event.ActionEvent;
 
 /**
  *
- * @author towers
+ * @author Duncan T
  */
 @ManagedBean
 @RequestScoped
