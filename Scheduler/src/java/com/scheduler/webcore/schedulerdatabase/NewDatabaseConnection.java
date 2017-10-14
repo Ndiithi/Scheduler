@@ -13,7 +13,7 @@ import javax.faces.bean.RequestScoped;
 
 /**
  *
- * @author towers
+ * @author Duncan
  */
 @ManagedBean
 @RequestScoped
