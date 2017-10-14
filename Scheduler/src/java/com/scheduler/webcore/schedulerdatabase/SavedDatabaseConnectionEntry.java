@@ -16,7 +16,7 @@ import javax.faces.event.ActionEvent;
 
 /**
  *
- * @author Duncan T
+ * @author Duncan
  */
 @ManagedBean
 @RequestScoped
