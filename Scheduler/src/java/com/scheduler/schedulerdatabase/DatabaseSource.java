@@ -15,7 +15,7 @@ import javax.validation.constraints.NotNull;
 
 /**
  *
- * @author towers
+ * @author Duncan
  */
 @Entity
 @NamedQuery(name = "findDatabaseSourceEntryById",query = "Select c from DatabaseSource c where c.id=:id")
