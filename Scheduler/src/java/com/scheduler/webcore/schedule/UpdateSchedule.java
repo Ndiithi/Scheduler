@@ -25,7 +25,7 @@ import javax.validation.constraints.NotNull;
 
 /**
  *
- * @author towers
+ * @author Duncan
  */
 @Named
 @RequestScoped
