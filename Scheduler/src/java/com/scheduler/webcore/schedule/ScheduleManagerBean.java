@@ -22,7 +22,7 @@ import javax.persistence.Query;
 
 /**
  *
- * @author towers
+ * @author Duncan
  */
 @Stateless
 public class ScheduleManagerBean {
