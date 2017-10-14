@@ -19,7 +19,7 @@ import javax.persistence.Query;
 import java.util.Iterator;
 /**
  *
- * @author towers
+ * @author Duncan
  */
 @Named(value = "schduleSupport")
 @RequestScoped
