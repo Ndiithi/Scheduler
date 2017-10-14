@@ -28,7 +28,7 @@ import javax.persistence.Query;
 
 /**
  *
- * @author towers
+ * @author Duncan
  */
 @Named
 @Dependent
