@@ -15,7 +15,7 @@ import javax.faces.event.ActionEvent;
 
 /**
  *
- * @author towers
+ * @author Duncan
  */
 @Named
 @RequestScoped
