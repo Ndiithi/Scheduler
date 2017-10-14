@@ -7,7 +7,7 @@ package com.scheduler.schedule;
 
 /**
  *
- * @author towers
+ * @author Duncan
  */
 public enum Period {
     HOURLY,
