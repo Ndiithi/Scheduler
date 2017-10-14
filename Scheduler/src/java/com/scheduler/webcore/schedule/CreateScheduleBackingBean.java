@@ -12,7 +12,7 @@ import javax.enterprise.context.RequestScoped;
 
 /**
  *
- * @author towers
+ * @author Duncan
  */
 @Named
 @SessionScoped
