@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author towers
+ * @author Duncan
  */
 @Named
 @Dependent
