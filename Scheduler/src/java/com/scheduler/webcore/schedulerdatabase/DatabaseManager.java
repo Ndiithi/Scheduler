@@ -19,7 +19,7 @@ import javax.transaction.UserTransaction;
 
 /**
  *
- * @author mspace-developer
+ * @author Duncan
  */
 @Stateless
 public class DatabaseManager {
